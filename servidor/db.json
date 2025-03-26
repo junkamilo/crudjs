@@ -107,6 +107,16 @@
       "correo": "fivybuhiw@mailinator.com",
       "tipo_documento": "2",
       "documento": "12345687"
+    },
+    {
+      "genero": "2",
+      "nombre": "Juan camilo ",
+      "apellidos": "Beltran campo",
+      "telefono": "12345678",
+      "correo": "junkabeltran@gmail.com",
+      "tipo_documento": "1",
+      "documento": "123456789",
+      "id": "IelDC_5"
     }
   ]
 }
