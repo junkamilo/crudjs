@@ -107,14 +107,7 @@ const cargar_usuarios = async () => {
     
     tdBotonera.append(div_botonera);
     div_botonera.append(button_editar, button_eliminar);
-    fila.append(tdNombre);
-    fila.append(tdApellido);
-    fila.append(tdTelefono);
-    fila.append(tdCorreo);
-    fila.append(tdDocumento);
-    fila.append(div_botonera);
-    fila.append(tdBotonera);
-
+    fila.append(tdNombre,tdApellido,tdTelefono,tdCorreo,tdDocumento,tdBotonera);
     tabla_cuerpo.append(fila);
 
   });
@@ -133,7 +126,8 @@ const guardar = async (e) => {
   // Validamos eu el objeto tenga los datos completos y no llegen vacios
   if (tiene_valores(data)) {
     // Enviamos los datos al metodo guardar_usuario
-    const respuesta = await guardar_usuario(data);    
+    const respuesta = await guardar_usuario(data);   
+     cargar_usuarios();
     if (respuesta.status === 201) {
       alert("Usuario guardado correctamente");
       // Limpiamos el formulario
