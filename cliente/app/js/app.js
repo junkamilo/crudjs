@@ -7,7 +7,7 @@
 // Importaciones para las ayudas
 import { listarDocumentos } from "../casos_de_uso/documentos/index.js";
 import { listarGeneros } from "../casos_de_uso/generos/index.js";
-import { guardar_usuario } from "../casos_de_uso/usuarios/index.js";
+import { guardar_usuario , listar_usuarios } from "../casos_de_uso/usuarios/index.js";
 import {
   tiene_valores,
   validar_campos,
@@ -70,6 +70,16 @@ const cargar_pagina = async () => {
 
  }
 
+const cargar_usuarios = async () => {
+  const arrayUsuarios = await listar_usuarios();
+  console.log(arrayUsuarios);
+
+  arrayUsuarios.forEach((nombre,apellidos,telefono,correo,documento) =>{
+    
+  })
+  
+}
+
 // Función asincrona para poder manipular las peticiones y guardar los datos del formulario
 const guardar = async (e) => {
   // Detenemos el comportamiento por defecto del formulario
@@ -92,6 +102,7 @@ const guardar = async (e) => {
   }
 }
 
+
 /**
  * ****************************************
  * Definimos los Eventos
@@ -101,6 +112,7 @@ const guardar = async (e) => {
 // Evento que se ejecuta cuando el documento se ha cargado
 document.addEventListener("DOMContentLoaded", () => {
   cargar_pagina();
+  cargar_usuarios();
 });
 
 nombre.addEventListener("keydown", son_letras);
