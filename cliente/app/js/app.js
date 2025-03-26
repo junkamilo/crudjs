@@ -30,6 +30,8 @@ const email = document.querySelector("#correo");
 const tipoDocumento = document.querySelector("#tipo_documento");
 const documento = document.querySelector('#documento');
 const generos = document.querySelector('#generos');
+const tabla = document.querySelector('#tabla');
+
 
 /**
  * ****************************************
@@ -72,11 +74,53 @@ const cargar_pagina = async () => {
 
 const cargar_usuarios = async () => {
   const arrayUsuarios = await listar_usuarios();
-  console.log(arrayUsuarios);
+  const tabla_cuerpo = tabla.querySelector("tbody");  
 
-  arrayUsuarios.forEach((nombre,apellidos,telefono,correo,documento) =>{
+  arrayUsuarios.forEach(({nombre,apellidos,telefono,correo,documento}) =>{
+    //creamos los elementos
+    const fila = document.createElement("tr");
+    const tdNombre = document.createElement("td");
+    const tdApellido = document.createElement("td");
+    const tdTelefono = document.createElement("td");
+    const tdCorreo = document.createElement("td");
+    const tdDocumento = document.createElement("td");
+    const tdBotonera = document.createElement("td");
+    const div_botonera = document.createElement("div");
+    const button_editar = document.createElement("button");
+    const button_eliminar = document.createElement("button");
     
-  })
+    //agreamos clases
+    div_botonera.classList.add("botonera");
+    button_editar.classList.add("btn" , "btn--samall");
+    button_eliminar.classList.add("btn" , "btn--samall" , "btn--danger");
+
+    //agregamos el nodo de texto
+    tdNombre.textContent = nombre;
+    tdApellido.textContent = apellidos;
+    tdTelefono.textContent = telefono;
+    tdCorreo.textContent = correo;
+    tdDocumento.textContent = documento;
+    button_editar.textContent = "editar"
+    button_eliminar.textContent = "Eliminar"
+
+    
+    
+    tdBotonera.append(div_botonera);
+    div_botonera.append(button_editar, button_eliminar);
+    fila.append(tdNombre);
+    fila.append(tdApellido);
+    fila.append(tdTelefono);
+    fila.append(tdCorreo);
+    fila.append(tdDocumento);
+    fila.append(div_botonera);
+    fila.append(tdBotonera);
+
+    tabla_cuerpo.append(fila);
+
+  });
+
+
+
   
 }
 
